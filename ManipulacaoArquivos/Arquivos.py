@@ -1,4 +1,4 @@
-import gerador.py from GeracaoArquivo
+from GeracaoNumero import gerador;
 
 class Arquivo:
     def __init__(self, name, size):
@@ -10,7 +10,7 @@ class Arquivo:
         nameArquivo = "ArquivoTamanho"+self.__size
         with open (nameArquivo,'wb') as arquivo:
             for i in range(self.__size):
-                arquivo.write(gerarNumeros())
+                arquivo.write(gerador.GerarNumeros())
         return True
                 
     def ReadArquivoBin(self):
