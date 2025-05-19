@@ -7,7 +7,7 @@ class Arquivo:
     
 
     def createArquivoBin(self):
-        self.__name = self.__name + str(self.__size)
+        self.__name = self.__name + str(self.__size) +".bin"
         with open (self.__name,'wb') as arquivo:
             for i in range(self.__size):
                 arquivo.write(gerador.GerarNumeros(self.__size))
