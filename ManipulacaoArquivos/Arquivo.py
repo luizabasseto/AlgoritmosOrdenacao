@@ -10,7 +10,7 @@ class Arquivo:
         self.__name = self.__name + str(self.__size)
         with open (self.__name,'wb') as arquivo:
             for i in range(self.__size):
-                arquivo.write(gerador.GerarNumeros())
+                arquivo.write(gerador.GerarNumeros(self.__size))
                 
     def ReadArquivoBin(self):
         lista = []
