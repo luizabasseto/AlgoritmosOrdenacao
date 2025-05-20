@@ -1,10 +1,15 @@
-all:
-	g++ -c algoritmosOrdenacao.cpp
-	g++ -c buscas.cpp
-	g++ -c gerador.cpp
-	g++ -c manipulacaoArquivos.cpp
-	g++ -c main.cpp
-	g++ codigos.o main.o -o main
+CC = g++
+CFLAGS = -c
+OBJ = algoritmosOrdenacao.o buscas.o gerador.o manipulacaoArquivos.o main.o
+EXEC = main
+
+all: $(EXEC)
+
+$(EXEC): $(OBJ)
+	$(CC) $(OBJ) -o $(EXEC)
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	rm codigos.o main.o main
+	rm -f $(OBJ) $(EXEC)

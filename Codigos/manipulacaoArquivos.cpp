@@ -1,15 +1,19 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <string>
+#include <string>		
 #include <cstdint>
 #include <random>
+
 #include "gerador.cpp"
+
+using namespace std;
+
 
 void createArquivoBin(string name, int size)
 {
     std::string filename = name + std::to_string(size) + ".bin";
-    std::vector<int> numeros = Gerador::GerarNumeros(size);
+    std::vector<int> numeros = GerarNumeros(size);
 
     std::ofstream arquivo(filename, std::ios::binary);
     if (!arquivo)
@@ -28,7 +32,7 @@ void createArquivoBin(string name, int size)
     arquivo.close();
 }
 
-std::vector<int> ReadArquivoBin(string name)
+std::vector<int> ReadArquivoBin(string name, int size)
 {
     std::string filename = name + std::to_string(size) + ".bin";
     std::vector<int> lista;
@@ -50,7 +54,7 @@ std::vector<int> ReadArquivoBin(string name)
         }
         else
         {
-            break; // não leu o suficiente, fim do arquivo
+            break; 
         }
     }
 
