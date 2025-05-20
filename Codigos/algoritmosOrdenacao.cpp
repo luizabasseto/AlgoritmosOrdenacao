@@ -3,8 +3,7 @@
 
 template<typename T>
 
-bool BubbleSortOtimizado(vector>T>& lista , int n)
-{
+bool BubbleSortOtimizado(vector<T>& lista , int n){
     bool swapped;
 
     for (int i = 0; i < n; i++)
@@ -27,8 +26,7 @@ bool BubbleSortOtimizado(vector>T>& lista , int n)
     return verificarOrdenacao(lista,n);
 }
 
-bool BubbleSortPuro(vector>T>& lista, int n)
-{
+bool BubbleSortPuro(vector<T>& lista, int n){
 
     for (int i = 0; i < n; i++)
     {
@@ -44,7 +42,7 @@ bool BubbleSortPuro(vector>T>& lista, int n)
     return verificarOrdenacao(lista, n);
 }
 
-bool verificarOrdenacao(vector>T>& lista, int n)
+bool verificarOrdenacao(vector<T>& lista, int n)
 {
     for (size_t i = 0; i < n - 1; i++)
     {
