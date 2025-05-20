@@ -1,0 +1,10 @@
+all:
+	g++ -c algoritmosOrdenacao.cpp
+	g++ -c buscas.cpp
+	g++ -c gerador.cpp
+	g++ -c manipulacaoArquivos.cpp
+	g++ -c main.cpp
+	g++ codigos.o main.o -o main
+
+clean:
+	rm codigos.o main.o main

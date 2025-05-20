@@ -1,4 +1,7 @@
 {
     "nuxt.isNuxtApp": false,
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "files.associations": {
+        "tuple": "cpp"
+    }
 }
