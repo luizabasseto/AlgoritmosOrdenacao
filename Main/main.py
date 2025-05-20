@@ -8,12 +8,11 @@ def main():
     arquivo1.createArquivoBin()
 
     lista1 = arquivo1.ReadArquivoBin()
-    lista = algoritmosOrdenacao.Algoritmos(lista1,1000)
+    lista1Bubble = algoritmosOrdenacao.Algoritmos(lista1,1000)
 
     inicio = time.time()
     lista.BubbleSortPuro()
     fim = time.time()
 
     print(fim-inicio)
-    
-main()    
+        

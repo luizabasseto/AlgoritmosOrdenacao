@@ -8,9 +8,10 @@ class Arquivo:
 
     def createArquivoBin(self):
         self.__name = self.__name + str(self.__size) +".bin"
+        numeros = gerador.GerarNumeros(self.__size)
         with open (self.__name,'wb') as arquivo:
-            for i in range(self.__size):
-                arquivo.write(gerador.GerarNumeros(self.__size))
+            for numero in numeros:
+                arquivo.write(numero.to_bytes(4, byteorder='little'))
                 
     def ReadArquivoBin(self):
         lista = []
