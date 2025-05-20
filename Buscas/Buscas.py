@@ -6,7 +6,7 @@ class Buscas:
     def buscaBinaria(self,elemento):
         lista = self.__lista
         for i in range(self.__n):
-            
+            return i
         
         
         
