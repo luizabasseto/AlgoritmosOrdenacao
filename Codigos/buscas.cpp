@@ -1,13 +1,36 @@
 #include <iostream>
 #include <vector>
 
-int buscaBinaria(int elemento)
+using namespace std;
+
+template <typename T>
+int buscaBinaria(int elemento, vector<T> &lista, int n)
 {
+    int j = n/2;
+    for (int i = 0; i < n; i++)
+    {
+        if(lista[j]>elemento){
+            for (int k = j; k < n; k++)
+            {
+                j= j/2;
+                if (lista[j]>elemento)
+                {
+                    
+                }
+                
+            }
+            
+        }else{
+
+        }
+    }
+    
 
     return -1;
 }
 
-int buscaLinear(int elemento, int *lista, int n)
+template <typename T>
+int buscaLinear(int elemento, vector<T> &lista, int n)
 {
     for (int i = 0; i < n; i++)
     {
