@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <random>
 
-#include "gerador.cpp"
+#include "gerador.hpp"
 
 using namespace std;
 
@@ -24,7 +24,6 @@ void createArquivoBin(string name, int size)
 
     for (int num : numeros)
     {
-        // Escreve 4 bytes little endian (inteiro de 32 bits)
         uint32_t val = static_cast<uint32_t>(num);
         arquivo.write(reinterpret_cast<const char *>(&val), sizeof(val));
     }

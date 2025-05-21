@@ -1,9 +1,24 @@
 #include <iostream>
 #include <vector>
 
-template<typename T>
+using namespace std;
 
-bool BubbleSortOtimizado(vector<T>& lista , int n){
+template <typename T>
+bool verificarOrdenacao(vector<T> &lista, int n)
+{
+    for (size_t i = 0; i < n - 1; i++)
+    {
+        if (lista[i] > lista[i + 1])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+template <typename T>
+bool BubbleSortOtimizado(vector<T> &lista, int n)
+{
     bool swapped;
 
     for (int i = 0; i < n; i++)
@@ -23,10 +38,12 @@ bool BubbleSortOtimizado(vector<T>& lista , int n){
         }
     }
 
-    return verificarOrdenacao(lista,n);
+    return verificarOrdenacao(lista, n);
 }
 
-bool BubbleSortPuro(vector<T>& lista, int n){
+template <typename T>
+bool BubbleSortPuro(vector<T> &lista, int n)
+{
 
     for (int i = 0; i < n; i++)
     {
@@ -42,14 +59,37 @@ bool BubbleSortPuro(vector<T>& lista, int n){
     return verificarOrdenacao(lista, n);
 }
 
-bool verificarOrdenacao(vector<T>& lista, int n)
+template <typename T>
+bool InsertionSort(vector<T> &lista, int n)
 {
-    for (size_t i = 0; i < n - 1; i++)
+    int i = 1;
+    int chave = lista[i];
+    for (int j = 0; j < n; j++)
     {
-        if (lista[i] > lista[i + 1])
+        chave = lista[i];
+        if (chave < lista[j])
         {
-            return false;
+            std::swap(chave, lista[j]);
         }
+        i++;
     }
-    return true;
-};
+}
+
+template <typename T>
+bool SelectionSort(vector<T> &lista, int n){
+    int minElemento = lista[0];
+    int j=0;
+    for (int i = 0; i < n; i++)
+    {
+        minElemento=lista[j];
+        for (int k = j; k < n; k++)
+        {
+          if(lista[k]<minElemento){
+            std::swap(minElemento,lista[k]);
+          }
+          j++;
+        }
+        
+    }
+    return verificarOrdenacao(lista,n);
+}
