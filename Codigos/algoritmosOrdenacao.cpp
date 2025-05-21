@@ -76,20 +76,21 @@ bool InsertionSort(vector<T> &lista, int n)
 }
 
 template <typename T>
-bool SelectionSort(vector<T> &lista, int n){
+bool SelectionSort(vector<T> &lista, int n)
+{
     int minElemento = lista[0];
-    int j=0;
+    int j = 0;
     for (int i = 0; i < n; i++)
     {
-        minElemento=lista[j];
+        minElemento = lista[j];
         for (int k = j; k < n; k++)
         {
-          if(lista[k]<minElemento){
-            std::swap(minElemento,lista[k]);
-          }
-          j++;
+            if (lista[k] < minElemento)
+            {
+                std::swap(minElemento, lista[k]);
+            }
+            j++;
         }
-        
     }
-    return verificarOrdenacao(lista,n);
+    return verificarOrdenacao(lista, n);
 }
