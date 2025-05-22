@@ -6,14 +6,31 @@
 #include "manipArchives.hpp"
 #include "searches.hpp"
 
-int main(){
-    
+using namespace std;
+
+int main()
+{
     int n1 = 100;
     int n2 = 1000;
     int n3 = 1000000;
-    createArchiveBin("ArquivoN1",n1);
-    createArchiveBin("ArquivoN2",n2);
-    createArchiveBin("ArquivoN3",n3);
+    createArchiveBin("ArquivoN1_", n1);
+    createArchiveBin("ArquivoN2_", n2);
+    createArchiveBin("ArquivoN3_", n3);
 
+    vector<int> vet = ReadArchiveBin("ArquivoN1_", n1);
 
+    for (size_t i = 0; i < vet.size(); i++)
+    {
+        cout << vet[i] << " ";
+    }
+    cout << endl;
+
+    BubbleSort(vet, n1);
+
+    cout << "Após bubble sort" << endl;
+    for (size_t i = 0; i < vet.size(); i++)
+    {
+        cout << vet[i] << " ";
+    }
+    cout << endl;
 }

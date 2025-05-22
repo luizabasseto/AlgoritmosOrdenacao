@@ -6,19 +6,19 @@
 using namespace std;
 
 template<typename T>
-bool BubbleSortOptimized(vector<T> &vet, int n);
+void BubbleSortOptimized(vector<T> &vet, int n);
 
 template<typename T>
-bool BubbleSort(vector<T> &vet, int n);
+void BubbleSort(vector<T> &vet, int n);
 
 template<typename T>
-bool InsertionSort(vector<T> &vet, int n);
+void InsertionSort(vector<T> &vet, int n);
 
 template<typename T>
-bool InsertionSortOptimized(vector<T> &vet, int n);
+void InsertionSortOptimized(vector<T> &vet, int n);
 
 template<typename T>
-bool SelectionSort(vector<T> &vet, int n);
+void SelectionSort(vector<T> &vet, int n);
 
 
 #endif
