@@ -4,20 +4,7 @@
 using namespace std;
 
 template <typename T>
-bool verificarOrdenacao(vector<T> &lista, int n)
-{
-    for (size_t i = 0; i < n - 1; i++)
-    {
-        if (lista[i] > lista[i + 1])
-        {
-            return false;
-        }
-    }
-    return true;
-}
-
-template <typename T>
-bool BubbleSortOtimizado(vector<T> &lista, int n)
+void BubbleSortOtimizado(vector<T> &vet, int n)
 {
     bool swapped;
 
@@ -26,9 +13,9 @@ bool BubbleSortOtimizado(vector<T> &lista, int n)
         swapped = false;
         for (int j = 0; j < n - 1 - i; j++)
         {
-            if (lista[j] > lista[j + 1])
+            if (vet[j] > vet[j + 1])
             {
-                std::swap(lista[j], lista[j + 1]);
+                std::swap(vet[j], vet[j + 1]);
                 swapped = true;
             }
         }
@@ -37,60 +24,66 @@ bool BubbleSortOtimizado(vector<T> &lista, int n)
             break;
         }
     }
-
-    return verificarOrdenacao(lista, n);
 }
 
 template <typename T>
-bool BubbleSortPuro(vector<T> &lista, int n)
+void BubbleSortPuro(vector<T> &vet, int n)
 {
 
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n - 1 - i; j++)
         {
-            if (lista[j] > lista[j + 1])
+            if (vet[j] > vet[j + 1])
             {
-                std::swap(lista[j], lista[j + 1]);
+                std::swap(vet[j], vet[j + 1]);
             }
         }
     }
 
-    return verificarOrdenacao(lista, n);
+
 }
 
 template <typename T>
-bool InsertionSort(vector<T> &lista, int n)
+void InsertionSort(vector<T> &vet, int n)
 {
-    int i = 1;
-    int chave = lista[i];
-    for (int j = 0; j < n; j++)
+    for (int i = 1; i < n; i++)
     {
-        chave = lista[i];
-        if (chave < lista[j])
+        T key = array[i];
+        int j = i - 1;
+
+        while (j >= 0 && key < array[j])
         {
-            std::swap(chave, lista[j]);
+            array[j + 1] = array[j];
+            --j;
         }
-        i++;
+        array[j + 1] = key;
     }
 }
 
 template <typename T>
-bool SelectionSort(vector<T> &lista, int n)
+void InsertionSortOtimizado(vector<T> &vet, int n)
 {
-    int minElemento = lista[0];
-    int j = 0;
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i < n; i++)
     {
-        minElemento = lista[j];
-        for (int k = j; k < n; k++)
+        for (int j = i; j > 0 && vet[j] < vet[j - 1]; j--)
         {
-            if (lista[k] < minElemento)
-            {
-                std::swap(minElemento, lista[k]);
-            }
-            j++;
+            swap(vet[j], vet[j - 1]);
         }
     }
-    return verificarOrdenacao(lista, n);
+}
+
+template <typename T>
+void SelectionSort(vector<T> &vet, int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        int index_min = i;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (array[j] < array[index_min])
+                index_min = j;
+        }
+        std::swap(array[index_min], array[i]);
+    }
 }
