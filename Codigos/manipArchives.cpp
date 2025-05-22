@@ -12,7 +12,7 @@ using namespace std;
 
 void createArchiveBin(string name, int n)
 {
-    std::string filename = "../Archives"+ name + std::to_string(n) + ".bin";
+    std::string filename = "../Archives/"+ name + std::to_string(n) + ".bin";
     std::vector<int> numbers = randGenerator(n);
 
     std::ofstream archive(filename, std::ios::binary);
@@ -33,7 +33,7 @@ void createArchiveBin(string name, int n)
 
 std::vector<int> ReadArchiveBin(string name, int n)
 {
-    std::string filename =  "../Archives"+ name + std::to_string(n) + ".bin";
+    std::string filename =  "../Archives/"+ name + std::to_string(n) + ".bin";
     std::vector<int> vet;
 
     std::ifstream archive(filename, std::ios::binary);
