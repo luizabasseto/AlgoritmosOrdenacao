@@ -4,7 +4,7 @@
 using namespace std;
 
 template <typename T>
-int buscaBinaria(int elem, vector<T> &vet, int n)
+int binarySearch(int elem, vector<T> &vet, int n)
 {
     T low = vet[0];
     T high = vet[n-1];
@@ -26,11 +26,11 @@ int buscaBinaria(int elem, vector<T> &vet, int n)
 }
 
 template <typename T>
-int buscaLinear(int elemento, vector<T> &vet, int n)
+int linearSearch(int elem, vector<T> &vet, int n)
 {
     for (int i = 0; i < n; i++)
     {
-        if (vet[i] == elemento)
+        if (vet[i] == elem)
         {
             return i;
         }

@@ -4,7 +4,7 @@
 using namespace std;
 
 template <typename T>
-void BubbleSortOtimizado(vector<T> &vet, int n)
+void BubbleSortOptimized(vector<T> &vet, int n)
 {
     bool swapped;
 
@@ -27,7 +27,7 @@ void BubbleSortOtimizado(vector<T> &vet, int n)
 }
 
 template <typename T>
-void BubbleSortPuro(vector<T> &vet, int n)
+void BubbleSort(vector<T> &vet, int n)
 {
 
     for (int i = 0; i < n; i++)
@@ -62,7 +62,7 @@ void InsertionSort(vector<T> &vet, int n)
 }
 
 template <typename T>
-void InsertionSortOtimizado(vector<T> &vet, int n)
+void InsertionSortOptimized(vector<T> &vet, int n)
 {
     for (int i = 1; i < n; i++)
     {
