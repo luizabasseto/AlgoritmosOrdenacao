@@ -49,15 +49,15 @@ void InsertionSort(vector<T> &vet, int n)
 {
     for (int i = 1; i < n; i++)
     {
-        T key = array[i];
+        T key = vet[i];
         int j = i - 1;
 
-        while (j >= 0 && key < array[j])
+        while (j >= 0 && key < vet[j])
         {
-            array[j + 1] = array[j];
+            vet[j + 1] = vet[j];
             --j;
         }
-        array[j + 1] = key;
+        vet[j + 1] = key;
     }
 }
 
@@ -81,9 +81,9 @@ void SelectionSort(vector<T> &vet, int n)
         int index_min = i;
         for (int j = i + 1; j < n; j++)
         {
-            if (array[j] < array[index_min])
+            if (vet[j] < vet[index_min])
                 index_min = j;
         }
-        std::swap(array[index_min], array[i]);
+        std::swap(vet[index_min], vet[i]);
     }
 }
