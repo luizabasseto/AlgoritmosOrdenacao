@@ -1,26 +1,25 @@
-SRC_DIR = .
-BUILD_DIR = build
+SRCDIR := .
+BUILDDIR := build
+BINDIR := ../Archives
+TARGET := $(BUILDDIR)/main.exe
 
-CXX = g++
-CXXFLAGS = -Wall -std=c++11
+SRC := $(wildcard $(SRCDIR)/*.cpp)
+OBJ := $(patsubst $(SRCDIR)/%.cpp,$(BUILDDIR)/%.o,$(SRC))
 
-SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
-OBJECTS = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SOURCES))
+CXX := g++
+CXXFLAGS := -Wall -std=c++11
 
-EXEC = $(BUILD_DIR)/main.exe
+all: create_dirs $(TARGET)
 
-all: $(EXEC)
+$(TARGET): $(OBJ)
+	$(CXX) $(OBJ) -o $@
 
-$(EXEC): $(OBJECTS)
-	@if not exist $(BUILD_DIR) mkdir $(BUILD_DIR)
-	$(CXX) $(OBJECTS) -o $@
-
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@if not exist $(BUILD_DIR) mkdir $(BUILD_DIR)
+$(BUILDDIR)/%.o: $(SRCDIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-clean:
-	if exist $(BUILD_DIR) rmdir /s /q $(BUILD_DIR)
+create_dirs:
+	if not exist "$(BUILDDIR)" mkdir "$(BUILDDIR)"
+	if not exist "$(BINDIR)" mkdir "$(BINDIR)"
 
-run: all
-	./$(EXEC)
+clean:
+	del /Q $(BUILDDIR)\*.o $(TARGET)
