@@ -43,7 +43,8 @@ void BubbleSort(vector<T> &vet, int n)
     }
 
 
-}
+} template void BubbleSort<int>(std::vector<int>&, int);
+
 
 template <typename T>
 void InsertionSort(vector<T> &vet, int n)

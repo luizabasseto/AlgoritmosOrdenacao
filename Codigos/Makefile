@@ -3,45 +3,49 @@ SRCDIR := .
 BUILDDIR := build
 BINDIR := ../Archives
 
-# Detecta o sistema operacional
-ifeq ($(OS),Windows_NT)
-    EXE := .exe
-    RM := del /Q /F
-    MKDIR := if not exist $(1) mkdir $(1)
-else
-    EXE :=
-    RM := rm -f
-    MKDIR := mkdir -p $(1)
-endif
+# Nome do executável
+NAME := main
+TARGET := $(BUILDDIR)/$(NAME)
 
-TARGET := $(BUILDDIR)/main$(EXE)
-
-# Fonte e objetos
+# Fontes, objetos e dependências
 SRC := $(wildcard $(SRCDIR)/*.cpp)
 OBJ := $(patsubst $(SRCDIR)/%.cpp,$(BUILDDIR)/%.o,$(SRC))
+DEP := $(OBJ:.o=.d)
 
-# Compilador
+# Compilador e flags
 CXX := g++
-CXXFLAGS := -Wall -std=c++11
+CXXFLAGS := -Wall -std=c++11 -MMD -MP -m64
+LD := $(CXX)
+LDFLAGS := -m64
 
-# Regras
+# Regras principais
+.PHONY: all clean rebuild create_dirs install run
+
 all: create_dirs $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CXX) $(OBJ) -o $@
+	@echo "Linkando $@..."
+	$(LD) $(OBJ) -o $@ $(LDFLAGS)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.cpp
+	@echo "Compilando $<..."
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-ifeq ($(OS),Windows_NT)
-	create_dirs:
-		@if not exist $(BUILDDIR) mkdir $(BUILDDIR)
-		@if not exist $(BINDIR) mkdir $(BINDIR)
-else
-	create_dirs:
-		@mkdir -p $(BUILDDIR)
-		@mkdir -p $(BINDIR)
-endif
+create_dirs:
+	@mkdir -p $(BUILDDIR) $(BINDIR)
+
+install: all
+	@cp $(TARGET) $(BINDIR)/
+
+run: all
+	@echo "Executando $(TARGET)..."
+	@./$(TARGET)
+
 clean:
-	-$(RM) $(BUILDDIR)/*.o
-	-$(RM) $(TARGET)
+	@echo "Limpando arquivos..."
+	@rm -rf $(BUILDDIR) $(TARGET)
+
+rebuild: clean all
+
+# Inclusão de dependências (auto geradas com -MMD -MP)
+-include $(DEP)

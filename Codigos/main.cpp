@@ -25,8 +25,7 @@ int main()
     }
     cout << endl;
 
-    BubbleSort(vet, n1);
-
+    BubbleSort(vet,n1);
     cout << "Após bubble sort" << endl;
     for (size_t i = 0; i < vet.size(); i++)
     {
