@@ -23,7 +23,8 @@ int binarySearch(int elem, vector<T> &vet, int n)
     }
 
     return -1;
-}
+} template int binarySearch(int elem, vector<int> &vet, int n);
+
 
 template <typename T>
 int linearSearch(int elem, vector<T> &vet, int n)
@@ -36,4 +37,5 @@ int linearSearch(int elem, vector<T> &vet, int n)
         }
     }
     return -1;
-};
+
+} template int linearSearch(int elem, vector<int> &vet, int n);

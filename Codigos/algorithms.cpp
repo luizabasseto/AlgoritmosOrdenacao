@@ -25,7 +25,7 @@ void BubbleSortOptimized(vector<T> &vet, int n)
             break;
         }
     }
-}
+} template void BubbleSortOptimized<int>(std::vector<int>&, int);
 
 template <typename T>
 void BubbleSort(vector<T> &vet, int n)
