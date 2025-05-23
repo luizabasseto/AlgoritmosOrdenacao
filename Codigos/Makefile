@@ -2,50 +2,30 @@
 SRCDIR := .
 BUILDDIR := build
 BINDIR := ../Archives
+TARGET := $(BUILDDIR)/main.exe
 
-# Nome do executável
-NAME := main
-TARGET := $(BUILDDIR)/$(NAME)
-
-# Fontes, objetos e dependências
+# Fontes e objetos
 SRC := $(wildcard $(SRCDIR)/*.cpp)
 OBJ := $(patsubst $(SRCDIR)/%.cpp,$(BUILDDIR)/%.o,$(SRC))
-DEP := $(OBJ:.o=.d)
 
-# Compilador e flags
+# Compilador
 CXX := g++
-CXXFLAGS := -Wall -std=c++11 -MMD -MP -m64
-LD := $(CXX)
-LDFLAGS := -m64
+CXXFLAGS := -Wall -std=c++11
 
-# Regras principais
-.PHONY: all clean rebuild create_dirs install run
+# Regras
+all: $(TARGET)
 
-all: create_dirs $(TARGET)
-
+# Regra principal
 $(TARGET): $(OBJ)
-	@echo "Linkando $@..."
-	$(LD) $(OBJ) -o $@ $(LDFLAGS)
+	if not exist $(BINDIR) mkdir $(BINDIR)
+	$(CXX) $(OBJ) -o $@
 
+# Compilação de .cpp em .o
 $(BUILDDIR)/%.o: $(SRCDIR)/%.cpp
-	@echo "Compilando $<..."
+	if not exist $(BUILDDIR) mkdir $(BUILDDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-create_dirs:
-	@mkdir -p $(BUILDDIR) $(BINDIR)
-
-install: all
-	@cp $(TARGET) $(BINDIR)/
-
-run: all
-	@echo "Executando $(TARGET)..."
-	@./$(TARGET)
-
+# Limpeza
 clean:
-	@echo "Limpando arquivos..."
-	@rm -rf $(BUILDDIR) $(TARGET)
-
-rebuild: clean all
-
-# Inclusão de dependências (auto geradas com -MMD -MP)
--include $(DEP)
+	-del /Q $(BUILDDIR)\*.o 2>nul || exit 0
+	-del /Q $(TARGET) 2>nul || exit 0
