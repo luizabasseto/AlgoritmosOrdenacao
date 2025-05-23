@@ -78,7 +78,9 @@
         "xutility": "cpp",
         "chrono": "cpp",
         "forward_list": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "span": "cpp",
+        "variant": "cpp"
     },
     "cSpell.words": [
         "abrir"
