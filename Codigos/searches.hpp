@@ -1,15 +1,9 @@
-#ifndef SEARCHES_HPP
-#define SEARCHES_HPP
-
 #include <vector>
 
 using namespace std;
 
-template <typename T>
-int binarySearch(int elem, vector<T> &vet, int n);
 
-template <typename T>
-int linearSearch(int elem, vector<T> &vet, int n);
+int binarySearch(int elem, vector<int> &vet, int n);
 
 
-#endif
+int linearSearch(int elem, vector<int> &vet, int n);

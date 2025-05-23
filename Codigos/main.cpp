@@ -33,7 +33,7 @@ int main()
     }
     cout << endl;
 
-    int index = binarySearch(61, vet, n1);
+    int index = binarySearch(73, vet, n1);
 
     cout << index << endl;
 }

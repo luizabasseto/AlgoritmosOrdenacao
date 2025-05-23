@@ -1,24 +1,19 @@
-#ifndef ALGORITHMS_H
-#define ALGORITHMS_H
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
-template<typename T>
-void BubbleSortOptimized(vector<T> &vet, int n);
 
-template<typename T>
-void BubbleSort(vector<T> &vet, int n);
-
-template<typename T>
-void InsertionSort(vector<T> &vet, int n);
-
-template<typename T>
-void InsertionSortOptimized(vector<T> &vet, int n);
-
-template<typename T>
-void SelectionSort(vector<T> &vet, int n);
+void BubbleSortOptimized(vector<int> &vet, int n);
 
 
-#endif
+void BubbleSort(vector<int> &vet, int n);
+
+
+void InsertionSort(vector<int> &vet, int n);
+
+
+void InsertionSortOptimized(vector<int> &vet, int n);
+
+
+void SelectionSort(vector<int> &vet, int n);
