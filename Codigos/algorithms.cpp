@@ -5,9 +5,12 @@
 using namespace std;
 
 
-void BubbleSortOptimized(vector<int> &vet, int n)
+vector<int> BubbleSortOptimized(vector<int> &vet, int n)
 {
     bool swapped;
+    vector<int> troca_comp;
+    int trocas=0;
+    int comp=0;
 
     for (int i = 0; i < n; i++)
     {
@@ -18,13 +21,16 @@ void BubbleSortOptimized(vector<int> &vet, int n)
             {
                 std::swap(vet[j], vet[j + 1]);
                 swapped = true;
+                trocas++;
             }
+            comp++;
         }
         if (!swapped)
         {
             break;
         }
     }
+    return troca_comp;
 }
 
 

@@ -4,7 +4,7 @@
 using namespace std;
 
 
-void BubbleSortOptimized(vector<int> &vet, int n);
+vector<int> BubbleSortOptimized(vector<int> &vet, int n);
 
 
 void BubbleSort(vector<int> &vet, int n);
