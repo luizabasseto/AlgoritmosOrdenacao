@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <chrono>
 
 #include "algorithms.hpp"
 #include "manipArchives.hpp"
@@ -10,30 +11,59 @@ using namespace std;
 
 int main()
 {
-    int n1 = 100;
-    /* int n2 = 1000;
-    int n3 = 1000000;
+    int n1 = 10000;
+    int n2 = 10000;
+    int n3 = 35000;
     createArchiveBin("ArquivoN1_", n1);
     createArchiveBin("ArquivoN2_", n2);
-    createArchiveBin("ArquivoN3_", n3);*/
+    createArchiveBin("ArquivoN3_", n3);
 
     vector<int> vet = ReadArchiveBin("ArquivoN1_", n1);
 
-    for (size_t i = 0; i < vet.size(); i++)
-    {
-        cout << vet[i] << " ";
-    }
-    cout << endl;
+    cout <<"PARA O TAMANHO 1, com demora de aproximadamente 1s" << endl;
 
+    cout <<"Reorganização com Bubble Sort Otimizado" << endl;
+    auto inicio = std::chrono::high_resolution_clock::now();
     BubbleSortOptimized(vet, n1);
-    cout << "Após bubble sort" << endl;
-    for (size_t i = 0; i < vet.size(); i++)
-    {
-        cout << vet[i] << " ";
-    }
-    cout << endl;
+    auto fim = std::chrono::high_resolution_clock::now();
+    double dur_sec = std::chrono::duration_cast<std::chrono::duration<double>>(fim - inicio).count();
+    cout << "Tempo Gasto: " << dur_sec << " segundos" << endl;
+    cout<<endl;
 
-    int index = binarySearch(73, vet, n1);
+    cout <<"Reorganização com Bubble Sort Puro" << endl;
+    vet = ReadArchiveBin("ArquivoN1_", n1);
+    inicio = std::chrono::high_resolution_clock::now();
+    BubbleSort(vet, n1);
+    fim = std::chrono::high_resolution_clock::now();
+    dur_sec = std::chrono::duration_cast<std::chrono::duration<double>>(fim - inicio).count();
+    cout << "Tempo Gasto: " << dur_sec << " segundos" << endl;
+    cout<<endl;
 
-    cout << index << endl;
+    cout <<"Reorganização com Selection Sort" << endl;
+    vet = ReadArchiveBin("ArquivoN1_", n1);
+    inicio = std::chrono::high_resolution_clock::now();
+    SelectionSort(vet, n1);
+    fim = std::chrono::high_resolution_clock::now();
+    dur_sec = std::chrono::duration_cast<std::chrono::duration<double>>(fim - inicio).count();
+    cout << "Tempo Gasto: " << dur_sec << " segundos" << endl;
+    cout<<endl;
+
+    cout <<"Reorganização com Insertion Sort" << endl;
+    vet = ReadArchiveBin("ArquivoN1_", n1);
+    inicio = std::chrono::high_resolution_clock::now();
+    InsertionSort(vet, n1);
+    fim = std::chrono::high_resolution_clock::now();
+    dur_sec = std::chrono::duration_cast<std::chrono::duration<double>>(fim - inicio).count();
+    cout << "Tempo Gasto: " << dur_sec << " segundos" << endl;
+    cout<<endl;
+
+    cout <<"Reorganização com Insertion Sort Otimizado" << endl;
+    vet = ReadArchiveBin("ArquivoN1_", n1);
+    inicio = std::chrono::high_resolution_clock::now();
+    InsertionSortOptimized(vet, n1);
+    fim = std::chrono::high_resolution_clock::now();
+    dur_sec = std::chrono::duration_cast<std::chrono::duration<double>>(fim - inicio).count();
+    cout << "Tempo Gasto: " << dur_sec << " segundos" << endl;
+    cout<<endl;
+
 }
