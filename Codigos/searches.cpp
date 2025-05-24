@@ -3,39 +3,47 @@
 
 using namespace std;
 
-
-int binarySearch(int elem, vector<int> &vet, int n)
+std::vector<int> binarySearch(int elem, vector<int> &vet, int n)
 {
     int low = 0;
-    int high = n-1;
+    int comp = 0;
+    int high = n - 1;
     while (low <= high)
     {
         int mid = low + (high - low) / 2;
 
         if (elem == vet[mid])
-            return mid;
-
-        if (elem > vet[mid])
-            low = mid + 1;
-
-        else
-            high = mid - 1;
-    }
-
-    return -1;
-}
-
-
-
-int linearSearch(int elem, vector<int> &vet, int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        if (vet[i] == elem)
         {
-            return i;
+            comp++;
+            return {mid,comp};
+        }
+        if (elem > vet[mid])
+        {
+            comp++;
+            low = mid + 1;
+        }
+        else
+        {
+            comp++;
+            high = mid - 1;
         }
     }
-    return -1;
 
+    return {-1,comp};
 }
+
+std::vector<int> linearSearch(int elem, vector<int> &vet, int n)
+{
+
+    int comp =0;
+    for (int i = 0; i < n; i++)
+    {
+        comp++;
+        if (vet[i] == elem)
+        {
+            return {i,comp};
+        }
+    }
+    return {-1,comp};
+}
+

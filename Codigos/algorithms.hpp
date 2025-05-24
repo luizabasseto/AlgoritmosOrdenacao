@@ -4,16 +4,16 @@
 using namespace std;
 
 
-vector<int> BubbleSortOptimized(vector<int> &vet, int n);
+std::vector<int> BubbleSortOptimized(vector<int> &vet, int n);
 
 
-void BubbleSort(vector<int> &vet, int n);
+std::vector<int> BubbleSort(vector<int> &vet, int n);
 
 
-void InsertionSort(vector<int> &vet, int n);
+std::vector<int> InsertionSort(vector<int> &vet, int n);
 
 
-void InsertionSortOptimized(vector<int> &vet, int n);
+std::vector<int> InsertionSortOptimized(vector<int> &vet, int n);
 
 
-void SelectionSort(vector<int> &vet, int n);
+std::vector<int> SelectionSort(vector<int> &vet, int n);

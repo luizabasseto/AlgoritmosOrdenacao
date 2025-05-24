@@ -4,13 +4,11 @@
 
 using namespace std;
 
-
-vector<int> BubbleSortOptimized(vector<int> &vet, int n)
+std::vector<int> BubbleSortOptimized(vector<int> &vet, int n)
 {
     bool swapped;
-    vector<int> troca_comp;
-    int trocas=0;
-    int comp=0;
+    int trocas = 0;
+    int comp = 0;
 
     for (int i = 0; i < n; i++)
     {
@@ -30,12 +28,13 @@ vector<int> BubbleSortOptimized(vector<int> &vet, int n)
             break;
         }
     }
-    return troca_comp;
+    return {trocas, comp};
 }
 
-
-void BubbleSort(vector<int> &vet, int n)
+std::vector<int> BubbleSort(vector<int> &vet, int n)
 {
+    int trocas = 0;
+    int comp = 0;
 
     for (int i = 0; i < n; i++)
     {
@@ -44,54 +43,78 @@ void BubbleSort(vector<int> &vet, int n)
             if (vet[j] > vet[j + 1])
             {
                 std::swap(vet[j], vet[j + 1]);
+                trocas++;
             }
+            comp++;
         }
     }
-
-
+    return {trocas, comp};
 }
 
-
-
-void InsertionSort(vector<int> &vet, int n)
+std::vector<int> InsertionSort(vector<int> &vet, int n)
 {
+    int trocas = 0;
+    int comp = 0;
     for (int i = 1; i < n; i++)
     {
         int key = vet[i];
         int j = i - 1;
-
-        while (j >= 0 && key < vet[j])
+        while (j >= 0)
         {
-            vet[j + 1] = vet[j];
-            --j;
+            comp++;
+            if (key < vet[j])
+            {
+                vet[j + 1] = vet[j]; 
+                trocas++;
+                --j;
+            }
+            else
+            {
+                break;
+            }
         }
         vet[j + 1] = key;
     }
+    return {trocas, comp};
 }
 
-
-void InsertionSortOptimized(vector<int> &vet, int n)
+std::vector<int> InsertionSortOptimized(vector<int> &vet, int n)
 {
+    int trocas = 0;
+    int comp = 0;
     for (int i = 1; i < n; i++)
     {
-        for (int j = i; j > 0 && vet[j] < vet[j - 1]; j--)
+        for (int j = i; j > 0; j--)
         {
-            swap(vet[j], vet[j - 1]);
+            comp++; 
+            if (vet[j] < vet[j - 1]) {
+                std::swap(vet[j], vet[j - 1]);
+                trocas++;
+            } else {
+                break;
+            }
         }
     }
+    return {trocas, comp};
 }
 
-
-void SelectionSort(vector<int> &vet, int n)
+std::vector<int> SelectionSort(vector<int> &vet, int n)
 {
+    int trocas = 0;
+    int comp = 0;
     for (int i = 0; i < n - 1; i++)
     {
         int index_min = i;
         for (int j = i + 1; j < n; j++)
         {
+            comp++; 
             if (vet[j] < vet[index_min])
+            {
                 index_min = j;
+            }
         }
         std::swap(vet[index_min], vet[i]);
+        trocas++;
     }
+    return {trocas, comp};
 }
