@@ -1,115 +1,63 @@
 #include <iostream>
 #include <vector>
-#include <fstream>
-#include <chrono>
 #include <string>
-#include <iomanip>
+#include <chrono>
+
 #include "algorithms.hpp"
+#include "manipArchives.hpp"
+#include "searches.hpp"
+#include "timeMeasure.hpp"
 
 using namespace std;
-using namespace chrono;
 
-void loadFromFile(const string& filename, vector<int>& vet) {
-    ifstream file(filename, ios::binary);
-    if (!file) {
-        cerr << "Erro ao abrir o arquivo " << filename << endl;
-        exit(1);
-    }
+int main()
+{
+    int n1 = 15000, n2 = 100000, n3 = 200000;
 
-    int num;
-    while (file.read(reinterpret_cast<char*>(&num), sizeof(int))) {
-        vet.push_back(num);
-    }
-    file.close();
-}
+    /*createArchiveBin("ArquivoN1_", n1);
+    createArchiveBin("ArquivoN2_", n2);
+    createArchiveBin("ArquivoN3_", n3);*/
 
-void saveToFile(const string& filename, const vector<int>& vet) {
-    ofstream file(filename, ios::binary);
-    for (int val : vet) {
-        file.write(reinterpret_cast<const char*>(&val), sizeof(int));
-    }
-    file.close();
-}
+    vector<int> vet1 = ReadArchiveBin("ArquivoN1_", n1);
+    vector<int> copy1 = vet1;
+    cout << "PARA O TAMANHO 1, com demora de aproximadamente 1s" << endl;
+    cout << endl;
+    timeMean(BubbleSortOptimized, copy1, n1, "Bubble Sort Otimizado");
+    copy1 = vet1;
+    timeMean(BubbleSort, copy1, n1, "Bubble Sort Puro");
+    copy1 = vet1;
+    timeMean(SelectionSort, copy1, n1, "Selection Sort");
+    copy1 = vet1;
+    timeMean(InsertionSort, copy1, n1, "Insertion Sort");
+    copy1 = vet1;
+    timeMean(InsertionSortOptimized, copy1, n1, "Insertion Sort Otimizado: ");
 
-void runSortTest(const string& name, vector<int> vet, vector<int> (*sortFunc)(vector<int>&, int)) {
-    int n = vet.size();
-    auto start = high_resolution_clock::now();
-    vector<int> result = sortFunc(vet, n);
-    auto end = high_resolution_clock::now();
+    cout << "PARA O TAMANHO 2, com demora de aproximadamente 30s" << endl;
+    vector<int> vet2 = ReadArchiveBin("ArquivoN2_", n2);
+    vector<int> copy2 = vet2;
+    timeMean(BubbleSortOptimized, copy2, n2, "Bubble Sort Otimizado");
+    copy2 = vet2;
+    timeMean(BubbleSort, copy2, n2, "Bubble Sort Puro");
+    copy2 = vet2;
+    timeMean(SelectionSort, copy2, n2, "Selection Sort");
+    copy2 = vet2;
+    timeMean(InsertionSort, copy2, n2, "Insertion Sort");
+    copy2 = vet2;
+    timeSearch(linearSearch, 56, vet2, n2, "Busca Linear em vetor não ordenado");
+    timeSearch(binarySearch, 56, vet2, n2, "Busca Binária em vetor não ordenado");
 
-    double duration = duration_cast<milliseconds>(end - start).count() / 1000.0;
-    cout << fixed << setprecision(3);
-    cout << "Tempo com " << name << ": " << duration << " segundos" << endl;
-    cout << "Trocas: " << result[0] << ", Comparações: " << result[1] << endl;
+    timeMean(InsertionSortOptimized, vet2, n2, "Insertion Sort Otimizado (para busca)");
 
-    // Salva vetor ordenado para testes de busca binária
-    saveToFile("dados/ordenado_" + name + ".bin", vet);
-}
+    timeSearch(linearSearch, 56, vet2, n2, "Busca Linear em vetor ordenado");
+    timeSearch(binarySearch, 56, vet2, n2, "Busca Binária em vetor ordenado");
 
-int linearSearch(int target, const vector<int>& vet, int& comps) {
-    for (int i = 0; i < vet.size(); ++i) {
-        comps++;
-        if (vet[i] == target)
-            return i;
-    }
-    return -1;
-}
-
-int binarySearch(int target, const vector<int>& vet, int& comps) {
-    int left = 0, right = vet.size() - 1;
-    while (left <= right) {
-        comps++;
-        int mid = left + (right - left) / 2;
-        if (vet[mid] == target)
-            return mid;
-        else if (vet[mid] < target)
-            left = mid + 1;
-        else
-            right = mid - 1;
-    }
-    return -1;
-}
-
-void runSearchTest(const vector<int>& vet, int target, const string& context) {
-    int comps = 0;
-    auto start = high_resolution_clock::now();
-    int pos = linearSearch(target, vet, comps);
-    auto end = high_resolution_clock::now();
-    double duration = duration_cast<microseconds>(end - start).count() / 1000000.0;
-
-    cout << "\nBusca Linear (" << context << ")\n";
-    cout << "Resultado: " << pos << ", Comparações: " << comps << ", Tempo: " << duration << "s" << endl;
-
-    comps = 0;
-    start = high_resolution_clock::now();
-    pos = binarySearch(target, vet, comps);
-    end = high_resolution_clock::now();
-    duration = duration_cast<microseconds>(end - start).count() / 1000000.0;
-
-    cout << "Busca Binária (" << context << ")\n";
-    cout << "Resultado: " << pos << ", Comparações: " << comps << ", Tempo: " << duration << "s" << endl;
-}
-
-int main() {
-    vector<int> original;
-    loadFromFile("dados/medio.bin", original); // use "pequeno.bin", "medio.bin", ou "grande.bin"
-
-    cout << "Tamanho da entrada: " << original.size() << endl;
-
-    runSortTest("BubbleSort", original, BubbleSort);
-    runSortTest("BubbleSortOptimized", original, BubbleSortOptimized);
-    runSortTest("InsertionSort", original, InsertionSort);
-    runSortTest("InsertionSortOptimized", original, InsertionSortOptimized);
-    runSortTest("SelectionSort", original, SelectionSort);
-
-    // Executar buscas
-    int target = original.size() > 500 ? original[500] : -1; // Valor garantido
-    runSearchTest(original, target, "vetor não ordenado");
-
-    // Carrega vetor já ordenado para testar busca binária corretamente
-    vector<int> ordenado;
-    loadFromFile("dados/ordenado_InsertionSort.bin", ordenado);
-    runSearchTest(ordenado, target, "vetor ordenado");
+    vector<int> vet3 = ReadArchiveBin("ArquivoN3_", n3);
+    cout << "PARA O TAMANHO 3, com demora de aproximadamente 3min" << endl;
+    timeMean(SelectionSort, vet3, n3, "Selection Sort");
+    timeMean(InsertionSort, vet3, n3, "Insertion Sort");
+    timeMean(InsertionSortOptimized, vet3, n3, "Insertion Sort Otimizado");
+    timeMean(BubbleSortOptimized, vet3, n3, "Bubble Sort Otimizado");
+    timeMean(BubbleSort, vet3, n3, "Bubble Sort Puro");
 
     return 0;
 }
