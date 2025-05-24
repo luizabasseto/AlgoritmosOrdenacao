@@ -30,6 +30,25 @@ void createArchiveBin(string name, int n)
 
     archive.close();
 }
+void createArchiveBinOrdenado(std::vector<int> vet,string name, int n)
+{
+    std::string filename = "../../Archives/" + name + std::to_string(n) + ".bin";
+
+    std::ofstream archive(filename, std::ios::binary);
+    if (!archive)
+    {
+        std::cerr << "Erro ao abrir archive para escrita.\n";
+        return;
+    }
+
+    for (int num : vet)
+    {
+        uint32_t val = static_cast<uint32_t>(num);
+        archive.write(reinterpret_cast<const char *>(&val), sizeof(val));
+    }
+
+    archive.close();
+}
 
 std::vector<int> ReadArchiveBin(string name, int n)
 {
