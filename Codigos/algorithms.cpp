@@ -4,11 +4,11 @@
 
 using namespace std;
 
-std::vector<int> BubbleSortOptimized(vector<int> &vet, int n)
+std::vector<long long> BubbleSortOptimized(vector<int> &vet, int n)
 {
     bool swapped;
-    int trocas = 0;
-    int comp = 0;
+    long long trocas = 0;
+    long long comp = 0;
 
     for (int i = 0; i < n; i++)
     {
@@ -31,10 +31,10 @@ std::vector<int> BubbleSortOptimized(vector<int> &vet, int n)
     return {trocas, comp};
 }
 
-std::vector<int> BubbleSort(vector<int> &vet, int n)
+std::vector<long long> BubbleSort(vector<int> &vet, int n)
 {
-    int trocas = 0;
-    int comp = 0;
+    long long trocas = 0;
+    long long comp = 0;
 
     for (int i = 0; i < n; i++)
     {
@@ -51,10 +51,10 @@ std::vector<int> BubbleSort(vector<int> &vet, int n)
     return {trocas, comp};
 }
 
-std::vector<int> InsertionSort(vector<int> &vet, int n)
+std::vector<long long> InsertionSort(vector<int> &vet, int n)
 {
-    int trocas = 0;
-    int comp = 0;
+    long long trocas = 0;
+    long long comp = 0;
     for (int i = 1; i < n; i++)
     {
         int key = vet[i];
@@ -78,10 +78,10 @@ std::vector<int> InsertionSort(vector<int> &vet, int n)
     return {trocas, comp};
 }
 
-std::vector<int> InsertionSortOptimized(vector<int> &vet, int n)
+std::vector<long long> InsertionSortOptimized(vector<int> &vet, int n)
 {
-    int trocas = 0;
-    int comp = 0;
+    long long trocas = 0;
+    long long comp = 0;
     for (int i = 1; i < n; i++)
     {
         for (int j = i; j > 0; j--)
@@ -98,11 +98,11 @@ std::vector<int> InsertionSortOptimized(vector<int> &vet, int n)
     return {trocas, comp};
 }
 
-std::vector<int> SelectionSort(vector<int> &vet, int n)
+std::vector<long long> SelectionSort(vector<int> &vet, int n)
 {
     
-    int trocas = 0;
-    int comp = 0;
+    long long trocas = 0;
+    long long comp = 0;
     
     for (int i = 0; i < n - 1; i++)
     {
