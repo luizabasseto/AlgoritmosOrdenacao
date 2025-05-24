@@ -100,8 +100,10 @@ std::vector<int> InsertionSortOptimized(vector<int> &vet, int n)
 
 std::vector<int> SelectionSort(vector<int> &vet, int n)
 {
+    
     int trocas = 0;
     int comp = 0;
+    
     for (int i = 0; i < n - 1; i++)
     {
         int index_min = i;

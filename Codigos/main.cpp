@@ -1,66 +1,115 @@
 #include <iostream>
 #include <vector>
-#include <string>
+#include <fstream>
 #include <chrono>
-
+#include <string>
+#include <iomanip>
 #include "algorithms.hpp"
-#include "manipArchives.hpp"
-#include "searches.hpp"
-#include "timeMeasure.hpp"
 
 using namespace std;
+using namespace chrono;
 
-int main()
-{
-    int n1 = 15000, n2 = 100000, n3 = 500000;
-
-    /*createArchiveBin("ArquivoN1_", n1);
-    createArchiveBin("ArquivoN2_", n2);*/
-    createArchiveBin("ArquivoN3_", n3);
-
-    vector<int> vet1 = ReadArchiveBin("ArquivoN1_", n1);
-    cout << "PARA O TAMANHO 1, com demora de aproximadamente 1s" << endl;
-    cout << endl;
-    timeMean(BubbleSortOptimized, vet1, n1, "Bubble Sort Otimizado");
-    timeMean(BubbleSort, vet1, n1, "Bubble Sort Puro");
-    timeMean(SelectionSort, vet1, n1, "Selection Sort");
-    timeMean(InsertionSort, vet1, n1, "Insertion Sort");
-    timeMean(InsertionSortOptimized, vet1, n1, "Insertion Sort Otimizado");
-
-    vector<int> vet2 = ReadArchiveBin("ArquivoN2_", n2);
-    cout << "PARA O TAMANHO 2, com demora de aproximadamente 30s" << endl;
-    for (int i = 0; i < n2; i++)
-    {
-        cout<<vet2[i]<<" ";
+void loadFromFile(const string& filename, vector<int>& vet) {
+    ifstream file(filename, ios::binary);
+    if (!file) {
+        cerr << "Erro ao abrir o arquivo " << filename << endl;
+        exit(1);
     }
-    cout<<endl;
-    
-    timeMean(BubbleSortOptimized, vet2, n2, "Bubble Sort Otimizado");
-    timeMean(BubbleSort, vet2, n2, "Bubble Sort Puro");
-    timeMean(SelectionSort, vet2, n2, "Selection Sort");
-    timeMean(InsertionSort, vet2, n2, "Insertion Sort");
 
-    timeSearch(linearSearch, 56, vet2, n2, "Busca Linear em vetor não ordenado");
-    timeSearch(binarySearch, 56, vet2, n2, "Busca Binária em vetor não ordenado");
-
-    timeMean(InsertionSortOptimized, vet2, n2, "Insertion Sort Otimizado (para busca)");
-    for (int i = 0; i < n2; i++)
-    {
-        cout<<vet2[i]<<" ";
+    int num;
+    while (file.read(reinterpret_cast<char*>(&num), sizeof(int))) {
+        vet.push_back(num);
     }
-    cout<<endl;
+    file.close();
+}
 
-    timeSearch(linearSearch, 56, vet2, n2, "Busca Linear em vetor ordenado");
-    timeSearch(binarySearch, 56, vet2, n2, "Busca Binária em vetor ordenado");
+void saveToFile(const string& filename, const vector<int>& vet) {
+    ofstream file(filename, ios::binary);
+    for (int val : vet) {
+        file.write(reinterpret_cast<const char*>(&val), sizeof(int));
+    }
+    file.close();
+}
 
-    // TAMANHO 3
-    vector<int> vet3 = ReadArchiveBin("ArquivoN3_", n3);
-    cout << "PARA O TAMANHO 3, com demora de aproximadamente 3min" << endl;
-    //timeMean(BubbleSortOptimized, vet3, n3, "Bubble Sort Otimizado");
-   // timeMean(BubbleSort, vet3, n3, "Bubble Sort Puro");
-    timeMean(SelectionSort, vet3, n3, "Selection Sort");
-    timeMean(InsertionSort, vet3, n3, "Insertion Sort");
-    timeMean(InsertionSortOptimized, vet3, n3, "Insertion Sort Otimizado");
+void runSortTest(const string& name, vector<int> vet, vector<int> (*sortFunc)(vector<int>&, int)) {
+    int n = vet.size();
+    auto start = high_resolution_clock::now();
+    vector<int> result = sortFunc(vet, n);
+    auto end = high_resolution_clock::now();
+
+    double duration = duration_cast<milliseconds>(end - start).count() / 1000.0;
+    cout << fixed << setprecision(3);
+    cout << "Tempo com " << name << ": " << duration << " segundos" << endl;
+    cout << "Trocas: " << result[0] << ", Comparações: " << result[1] << endl;
+
+    // Salva vetor ordenado para testes de busca binária
+    saveToFile("dados/ordenado_" + name + ".bin", vet);
+}
+
+int linearSearch(int target, const vector<int>& vet, int& comps) {
+    for (int i = 0; i < vet.size(); ++i) {
+        comps++;
+        if (vet[i] == target)
+            return i;
+    }
+    return -1;
+}
+
+int binarySearch(int target, const vector<int>& vet, int& comps) {
+    int left = 0, right = vet.size() - 1;
+    while (left <= right) {
+        comps++;
+        int mid = left + (right - left) / 2;
+        if (vet[mid] == target)
+            return mid;
+        else if (vet[mid] < target)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+    return -1;
+}
+
+void runSearchTest(const vector<int>& vet, int target, const string& context) {
+    int comps = 0;
+    auto start = high_resolution_clock::now();
+    int pos = linearSearch(target, vet, comps);
+    auto end = high_resolution_clock::now();
+    double duration = duration_cast<microseconds>(end - start).count() / 1000000.0;
+
+    cout << "\nBusca Linear (" << context << ")\n";
+    cout << "Resultado: " << pos << ", Comparações: " << comps << ", Tempo: " << duration << "s" << endl;
+
+    comps = 0;
+    start = high_resolution_clock::now();
+    pos = binarySearch(target, vet, comps);
+    end = high_resolution_clock::now();
+    duration = duration_cast<microseconds>(end - start).count() / 1000000.0;
+
+    cout << "Busca Binária (" << context << ")\n";
+    cout << "Resultado: " << pos << ", Comparações: " << comps << ", Tempo: " << duration << "s" << endl;
+}
+
+int main() {
+    vector<int> original;
+    loadFromFile("dados/medio.bin", original); // use "pequeno.bin", "medio.bin", ou "grande.bin"
+
+    cout << "Tamanho da entrada: " << original.size() << endl;
+
+    runSortTest("BubbleSort", original, BubbleSort);
+    runSortTest("BubbleSortOptimized", original, BubbleSortOptimized);
+    runSortTest("InsertionSort", original, InsertionSort);
+    runSortTest("InsertionSortOptimized", original, InsertionSortOptimized);
+    runSortTest("SelectionSort", original, SelectionSort);
+
+    // Executar buscas
+    int target = original.size() > 500 ? original[500] : -1; // Valor garantido
+    runSearchTest(original, target, "vetor não ordenado");
+
+    // Carrega vetor já ordenado para testar busca binária corretamente
+    vector<int> ordenado;
+    loadFromFile("dados/ordenado_InsertionSort.bin", ordenado);
+    runSearchTest(ordenado, target, "vetor ordenado");
 
     return 0;
 }
