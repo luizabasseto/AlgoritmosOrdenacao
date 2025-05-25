@@ -40,3 +40,12 @@ Exemplo: `Tempo de Execução × Tamanho do Vetor`.
           ./main
           
 Seguindo esses passos o código deverá ser executado no terminal Windows.
+
+## Configuração para gerar os gráficos
+
+  ### 1. Entre na pasta Grafico
+        cd Grafico
+  ### 2. Execute o arquivo graficos.py
+        Python graficos.py
+
+Assim será gerado uma imagem disponível para download com os 3 gráficos solicitados, para cada um dos tempos.

@@ -1,0 +1,16 @@
+PARA O TAMANHO 1, de n1=15000, com demora de aproximadamente 1s
+
+Tempo gasto com Bubble Sort Otimizado: 1.37948 segundos
+Trocas: 56091384, Comparações: 112488845
+
+Tempo gasto com Bubble Sort Puro: 1.53173 segundos
+Trocas: 56091384, Comparações: 112492500
+
+Tempo gasto com Selection Sort: 0.585919 segundos
+Trocas: 14999, Comparações: 112492500
+
+Tempo gasto com Insertion Sort: 0.458082 segundos
+Trocas: 56091384, Comparações: 56106379
+
+Tempo gasto com Insertion Sort Otimizado: : 0.451949 segundos
+Trocas: 56106383, Comparações: 56106379

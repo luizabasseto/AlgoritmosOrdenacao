@@ -64,7 +64,7 @@ std::vector<long long> InsertionSort(vector<int> &vet, int n)
             comp++;
             if (key < vet[j])
             {
-                vet[j + 1] = vet[j]; 
+                vet[j + 1] = vet[j];
                 trocas++;
                 --j;
             }
@@ -82,34 +82,41 @@ std::vector<long long> InsertionSortOptimized(vector<int> &vet, int n)
 {
     long long trocas = 0;
     long long comp = 0;
+
     for (int i = 1; i < n; i++)
     {
-        for (int j = i; j > 0; j--)
+        int chave = vet[i];
+        int j = i - 1;
+
+        while (j >= 0 && vet[j] > chave)
         {
-            comp++; 
-            if (vet[j] < vet[j - 1]) {
-                std::swap(vet[j], vet[j - 1]);
-                trocas++;
-            } else {
-                break;
-            }
+            vet[j + 1] = vet[j];
+            j--;
+            trocas++;
+            comp++;
         }
+
+        if (j >= 0)
+            comp++;
+
+        vet[j + 1] = chave;
+        trocas++;
     }
     return {trocas, comp};
 }
 
 std::vector<long long> SelectionSort(vector<int> &vet, int n)
 {
-    
+
     long long trocas = 0;
     long long comp = 0;
-    
+
     for (int i = 0; i < n - 1; i++)
     {
         int index_min = i;
         for (int j = i + 1; j < n; j++)
         {
-            comp++; 
+            comp++;
             if (vet[j] < vet[index_min])
             {
                 index_min = j;
