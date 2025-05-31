@@ -2,6 +2,7 @@
 #include <vector>
 #include <chrono>
 #include <string>
+#include <iomanip>
 #include "timeMeasure.hpp"
 
 using namespace std;
@@ -25,6 +26,7 @@ void timeSearch(std::vector<long long> (*searchFunc)(int, std::vector<int>&, int
     auto inicio = high_resolution_clock::now();
     std::vector<long long> elemento = searchFunc(elem, vet, n);
     auto fim = high_resolution_clock::now();
-    double dur = duration_cast<duration<double, std::milli>>(fim - inicio).count();
+    double dur = duration_cast<duration<double, std::micro>>(fim - inicio).count();
+    std::cout << std::fixed << std::setprecision(6);
     std::cout << "Resultado Index: " << elemento[0] << " |  Comparações: " << elemento[1] << " | Tempo Gasto: " << dur << " ms\n" << std::endl;
 }

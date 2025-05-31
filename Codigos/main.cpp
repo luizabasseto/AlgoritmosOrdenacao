@@ -12,7 +12,7 @@ using namespace std;
 
 int main()
 {
-    int n1 = 15000, n2 = 100000, n3 = 200000;
+    int n1 = 10000, n2 = 70000, n3 = 150000;
 
     /*createArchiveBin("ArquivoN1_", n1);
     createArchiveBin("ArquivoN2_", n2);
@@ -50,8 +50,8 @@ int main()
     copy2=vet2;
     timeMean(InsertionSort, copy2, n2, "Insertion Sort");
 
-    timeSearch(linearSearch, 8, vet2, n2, "Busca Linear em vetor ordenado");
-    timeSearch(binarySearch, 8, vet2, n2, "Busca Binária em vetor ordenado");
+    timeSearch(linearSearch, 8, copy2, n2, "Busca Linear em vetor ordenado");
+    timeSearch(binarySearch, 8, copy2, n2, "Busca Binária em vetor ordenado");
     copy2 = vet2;
     timeMean(BubbleSortOptimized, copy2, n2, "Bubble Sort Otimizado");
     timeMean(BubbleSort, vet2, n2, "Bubble Sort Puro");
