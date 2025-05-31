@@ -82,18 +82,20 @@ std::vector<long long> SelectionSortOptimized(vector<int> &vet, int n)
 {
     long long trocas = 0;
     long long comp = 0;
-    bool swapped =  true;
-
     for (int i = 0; i < n - 1; i++)
     {
-        for (int k = 0; k < n - 1; k++) {
-            if (vet[k] > vet[k + 1]) {
+        bool swapped = true;
+        for (int k = 0; k < n - 1; k++)
+        {
+            if (vet[k] > vet[k + 1])
+            {
                 swapped = false;
                 break;
             }
         }
 
-        if(swapped) break;
+        if (swapped)
+            break;
         int index_min = i;
         for (int j = i + 1; j < n; j++)
         {
@@ -103,7 +105,8 @@ std::vector<long long> SelectionSortOptimized(vector<int> &vet, int n)
                 index_min = j;
             }
         }
-        if(index_min != i){
+        if (index_min != i)
+        {
             std::swap(vet[index_min], vet[i]);
             trocas++;
         }
@@ -113,7 +116,6 @@ std::vector<long long> SelectionSortOptimized(vector<int> &vet, int n)
 
 std::vector<long long> SelectionSort(vector<int> &vet, int n)
 {
-
     long long trocas = 0;
     long long comp = 0;
 
@@ -128,8 +130,11 @@ std::vector<long long> SelectionSort(vector<int> &vet, int n)
                 index_min = j;
             }
         }
-        std::swap(vet[index_min], vet[i]);
-        trocas++;
+
+        if (index_min != i) {
+            std::swap(vet[index_min], vet[i]);
+            trocas++;
+        }
     }
     return {trocas, comp};
 }

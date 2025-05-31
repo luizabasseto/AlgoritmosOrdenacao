@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void timeMean(std::vector<long long> (*func)(std::vector<int>&, int), std::vector<int> vet, int n, const std::string& nome)
+void timeMean(std::vector<long long> (*func)(std::vector<int>&, int), std::vector<int>& vet, int n, const std::string& nome)
 {
     using namespace std::chrono;
 
@@ -19,13 +19,12 @@ void timeMean(std::vector<long long> (*func)(std::vector<int>&, int), std::vecto
     std::cout << "Trocas: " << trocas_comp[0] << ", Comparações: " << trocas_comp[1] << std::endl << std::endl;
 }
 
-
-void timeSearch(std::vector<long long> (*searchFunc)(int, std::vector<int>&, int), int elem, std::vector<int> vet, int n, const std::string& nome) {
+void timeSearch(std::vector<long long> (*searchFunc)(int, std::vector<int>&, int), int elem, std::vector<int>& vet, int n, const std::string& nome){
     using namespace std::chrono;
     std::cout << nome << std::endl;
     auto inicio = high_resolution_clock::now();
     std::vector<long long> elemento = searchFunc(elem, vet, n);
     auto fim = high_resolution_clock::now();
-    auto dur = duration_cast<duration<double, std::milli>>(fim - inicio).count();
+    auto dur = duration_cast<microseconds>(fim - inicio).count();
     std::cout << "Resultado Index: " << elemento[0] << " |  Comparações: " << elemento[1] << " | Tempo Gasto: " << dur << " ms\n" << std::endl;
 }

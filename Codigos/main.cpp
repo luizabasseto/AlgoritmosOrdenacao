@@ -26,21 +26,20 @@ int main()
     copy1 = vet1;
     timeMean(BubbleSort, copy1, n1, "Bubble Sort Puro");
     copy1 = vet1;
-    timeMean(SelectionSort, copy1, n1, "Selection Sort");
+    timeMean(SelectionSortOptimized, copy1, n1, "Selection Sort Otimizado: ");
     copy1 = vet1;
     timeMean(InsertionSort, copy1, n1, "Insertion Sort");
     copy1 = vet1;
-    timeSearch(linearSearch, copy1[n1/2], copy1, n1, "Busca Linear em vetor não ordenado");
-    timeSearch(binarySearch, copy1[n1/2], copy1, n1, "Busca Binária em vetor não ordenado");
-    timeMean(SelectionSortOptimized, vet1, n1, "Selection Sort Otimizado: ");
-    timeSearch(linearSearch, vet1[n1/2], vet1, n1, "Busca Linear em vetor ordenado");
-    timeSearch(binarySearch, vet1[n1/2], vet1, n1, "Busca Binária em vetor ordenado");
+    timeSearch(linearSearch, 8, copy1, n1, "Busca Linear em vetor não ordenado");
+    timeSearch(binarySearch, 8, copy1, n1, "Busca Binária em vetor não ordenado");
+    timeMean(SelectionSort, vet1, n1, "Selection Sort");
+    timeSearch(linearSearch, 8, vet1, n1, "Busca Linear em vetor ordenado");
+    timeSearch(binarySearch, 8, vet1, n1, "Busca Binária em vetor ordenado");
 
-    cout << "--------------------------------------------\n" << endl;
-
+    cout << "--------------------------------------------\n"<< endl;
 
     cout << "PARA O TAMANHO 2, de n2=" << n2 << ", com demora de aproximadamente 30s" << endl;
-    vector<int> vet2 = ReadArchiveBin("ArquivoN2_", n2);    
+    vector<int> vet2 = ReadArchiveBin("ArquivoN2_", n2);
     vector<int> copy2 = vet2;
     timeMean(BubbleSortOptimized, copy2, n2, "Bubble Sort Otimizado");
     copy2 = vet2;
@@ -49,17 +48,16 @@ int main()
     timeMean(SelectionSort, copy2, n2, "Selection Sort");
     copy2 = vet2;
     timeMean(SelectionSortOptimized, copy2, n2, "Selection Sort Otimizado");
-    
+
     timeSearch(linearSearch, 8, vet2, n2, "Busca Linear em vetor não ordenado");
     timeSearch(binarySearch, 8, vet2, n2, "Busca Binária em vetor não ordenado");
 
-    timeMean(InsertionSort, copy2, n2, "Insertion Sort");
+    timeMean(InsertionSort, vet2, n2, "Insertion Sort");
 
     timeSearch(linearSearch, 8, vet2, n2, "Busca Linear em vetor ordenado");
     timeSearch(binarySearch, 8, vet2, n2, "Busca Binária em vetor ordenado");
 
-    cout << "--------------------------------------------\n" << endl;
-
+    cout << "--------------------------------------------\n"<< endl;
 
     vector<int> vet3 = ReadArchiveBin("ArquivoN3_", n3);
     vector<int> copy3 = vet3;
@@ -73,10 +71,10 @@ int main()
     timeMean(BubbleSortOptimized, copy3, n3, "Bubble Sort Otimizado");
     timeMean(BubbleSort, vet3, n3, "Bubble Sort Puro");
 
-    //Armazenar vetores ordenados em arquivos binários
-    createArchiveBinOrdenado(vet1,"ArquivoN1_Ordenado_", n1);
-    createArchiveBinOrdenado(vet2,"ArquivoN2_Ordenado_", n2);
-    createArchiveBinOrdenado(vet3,"ArquivoN3_Ordenado_", n3);
+    // Armazenar vetores ordenados em arquivos binários
+    createArchiveBinOrdenado(vet1, "ArquivoN1_Ordenado_", n1);
+    createArchiveBinOrdenado(vet2, "ArquivoN2_Ordenado_", n2);
+    createArchiveBinOrdenado(vet3, "ArquivoN3_Ordenado_", n3);
 
     return 0;
 }
