@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <vector>
 #include <string>
 #include <algorithm> // Para std::sort para verificar e para std::is_sorted
@@ -174,7 +174,7 @@ int main()
 
     return 0;
 }
-
+*/
 /*
 Para compilar e executar este arquivo:
 

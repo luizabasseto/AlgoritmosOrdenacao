@@ -12,7 +12,7 @@ using namespace std;
 
 int main()
 {
-    int n1 = 10000, n2 = 70000, n3 = 150000;
+    int n1 = 12000, n2 = 70000, n3 = 100000;
 
     /*createArchiveBin("ArquivoN1_", n1);
     createArchiveBin("ArquivoN2_", n2);

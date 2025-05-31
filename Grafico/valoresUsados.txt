@@ -1,62 +1,76 @@
-PARA O TAMANHO 1, de n1=15000, com demora de aproximadamente 1s
+PARA O TAMANHO 1, de n1=12000, com demora de aproximadamente 1s
 
-Tempo gasto com Bubble Sort Otimizado: 1.58492 segundos
-Trocas: 56091384, Comparações: 112488845
+Tempo gasto com Bubble Sort Otimizado: 1.45114 segundos
+Trocas: 35709112, Comparações: 71983704
 
-Tempo gasto com Bubble Sort Puro: 1.7209 segundos
-Trocas: 56091384, Comparações: 112492500
+Tempo gasto com Bubble Sort Puro: 1.33083 segundos
+Trocas: 35709112, Comparações: 71994000
 
-Tempo gasto com Selection Sort: 0.622315 segundos
-Trocas: 14999, Comparações: 112492500
+Tempo gasto com Selection Sort Otimizado: : 1.24734 segundos
+Trocas: 11971, Comparações: 71993922
 
-Tempo gasto com Insertion Sort: 0.559474 segundos
-Trocas: 56091384, Comparações: 56106379
-
-Tempo gasto com Insertion Sort Otimizado: : 0.502626 segundos
-Trocas: 56106383, Comparações: 56106379
-
-PARA O TAMANHO 2, de n2=100000, com demora de aproximadamente 30s
-Tempo gasto com Bubble Sort Otimizado: 85.3042 segundos
-Trocas: 2506572675, Comparações: 4999880994
-
-Tempo gasto com Bubble Sort Puro: 101.582 segundos
-Trocas: 2506572675, Comparações: 4999950000
-
-Tempo gasto com Selection Sort: 28.2469 segundos
-Trocas: 99999, Comparações: 4999950000
-
-Tempo gasto com Insertion Sort Otimizado: 30.8951 segundos
-Trocas: 2506672674, Comparações: 2506672670
+Tempo gasto com Insertion Sort: 0.435547 segundos
+Trocas: 35709112, Comparações: 35721107
 
 Busca Linear em vetor não ordenado
-Resultado: 613 |  Comparações: 614 | Tempo Gasto: 0 ms
+Resultado Index: 613 |  Comparações: 614 | Tempo Gasto: 1031.000000 microsegundos
 
 Busca Binária em vetor não ordenado
-Resultado: -1 |  Comparações: 16 | Tempo Gasto: 0 ms
+Resultado Index: -1 |  Comparações: 13 | Tempo Gasto: 0.000000 microsegundos
 
-Tempo gasto com Insertion Sort: 31.2525 segundos
-Trocas: 2506572675, Comparações: 2506672670
+Tempo gasto com Selection Sort: 0.702620 segundos
+Trocas: 11971, Comparações: 71994000
 
 Busca Linear em vetor ordenado
-Resultado: 613 |  Comparações: 614 | Tempo Gasto: 0 ms
+Resultado Index: 97 |  Comparações: 98 | Tempo Gasto: 0.000000 microsegundos
 
 Busca Binária em vetor ordenado
-Resultado: -1 |  Comparações: 16 | Tempo Gasto: 0 ms
+Resultado Index: 103 |  Comparações: 10 | Tempo Gasto: 0.000000 microsegundos
 
+--------------------------------------------
 
+PARA O TAMANHO 2, de n2=70000, com demora de aproximadamente 30s
+Tempo gasto com Selection Sort: 18.218173 segundos
+Trocas: 69911, Comparações: 2449965000
 
-PARA O TAMANHO 3, de n3=200000, com demora de aproximadamente 3min
-Tempo gasto com Selection Sort: 129.904 segundos
-Trocas: 199999, Comparações: 19999900000
+Tempo gasto com Selection Sort Otimizado: 39.969767 segundos
+Trocas: 69911, Comparações: 2449962074
 
-Tempo gasto com Insertion Sort: 105.43 segundos
-Trocas: 9989849635, Comparações: 9990049630
+Busca Linear em vetor não ordenado
+Resultado Index: 613 |  Comparações: 614 | Tempo Gasto: 0.000000 microsegundos
 
-Tempo gasto com Insertion Sort Otimizado: 88.824 segundos
-Trocas: 199999, Comparações: 19999900000
+Busca Binária em vetor não ordenado
+Resultado Index: -1 |  Comparações: 16 | Tempo Gasto: 0.000000 microsegundos
 
-Tempo gasto com Bubble Sort Otimizado: 315.179 segundos
-Trocas: 9989849635, Comparações: 19999798525
+Tempo gasto com Insertion Sort: 15.741638 segundos
+Trocas: 1223487348, Comparações: 1223557343
 
-Tempo gasto com Bubble Sort Puro: 313.665 segundos
-Trocas: 9989849635, Comparações: 19999900000
+Busca Linear em vetor ordenado
+Resultado Index: 567 |  Comparações: 568 | Tempo Gasto: 0.000000 microsegundos
+
+Busca Binária em vetor ordenado
+Resultado Index: 613 |  Comparações: 10 | Tempo Gasto: 0.000000 microsegundos
+
+Tempo gasto com Bubble Sort Otimizado: 47.826009 segundos
+Trocas: 1223487348, Comparações: 2449947980
+
+Tempo gasto com Bubble Sort Puro: 111.310902 segundos
+Trocas: 1223487348, Comparações: 2449965000
+
+--------------------------------------------
+
+PARA O TAMANHO 3, de n3=100000, com demora de aproximadamente 3min
+Tempo gasto com Selection Sort: 90.830032 segundos
+Trocas: 99887, Comparações: 4999950000
+
+Tempo gasto com Insertion Sort: 73.401721 segundos
+Trocas: 2506572675, Comparações: 2506672670
+
+Tempo gasto com Selection Sort Otimizado: 213.950280 segundos
+Trocas: 99887, Comparações: 4999944435
+
+Tempo gasto com Bubble Sort Otimizado: 232.451618 segundos
+Trocas: 2506572675, Comparações: 4999880994
+
+Tempo gasto com Bubble Sort Puro: 214.831378 segundos
+Trocas: 2506572675, Comparações: 4999950000
