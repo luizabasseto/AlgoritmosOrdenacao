@@ -10,8 +10,8 @@ Este projeto tem como objetivo comparar o desempenho de diferentes algoritmos de
 ##  Algoritmos Implementados
 
 - Bubble Sort (Puro e Otimizado)
-- Selection Sort
-- Insertion Sort (Puro e com Busca Binária)
+- Selection Sort (Puro e Otimizado)
+- Insertion Sort
 - Busca Linear
 - Busca Binária
 
