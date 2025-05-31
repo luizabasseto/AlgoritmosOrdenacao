@@ -26,6 +26,6 @@ void timeSearch(std::vector<long long> (*searchFunc)(int, std::vector<int>&, int
     auto inicio = high_resolution_clock::now();
     std::vector<long long> elemento = searchFunc(elem, vet, n);
     auto fim = high_resolution_clock::now();
-    auto dur = duration_cast<milliseconds>(fim - inicio).count();
-    std::cout << "Resultado: " << elemento[0] << " |  Comparações: " << elemento[1] << " | Tempo Gasto: " << dur << " ms\n" << std::endl;
+    auto dur = duration_cast<duration<double, std::milli>>(fim - inicio).count();
+    std::cout << "Resultado Index: " << elemento[0] << " |  Comparações: " << elemento[1] << " | Tempo Gasto: " << dur << " ms\n" << std::endl;
 }

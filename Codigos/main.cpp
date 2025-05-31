@@ -30,11 +30,14 @@ int main()
     copy1 = vet1;
     timeMean(InsertionSort, copy1, n1, "Insertion Sort");
     copy1 = vet1;
-    timeSearch(linearSearch, 8, copy1, n1, "Busca Linear em vetor não ordenado");
-    timeSearch(binarySearch, 8, copy1, n1, "Busca Binária em vetor não ordenado");
-    timeMean(InsertionSortOptimized, vet1, n1, "Insertion Sort Otimizado: ");
-    timeSearch(linearSearch, 8, vet1, n1, "Busca Linear em vetor ordenado");
-    timeSearch(binarySearch, 8, vet1, n1, "Busca Binária em vetor ordenado");
+    timeSearch(linearSearch, copy1[n1/2], copy1, n1, "Busca Linear em vetor não ordenado");
+    timeSearch(binarySearch, copy1[n1/2], copy1, n1, "Busca Binária em vetor não ordenado");
+    timeMean(SelectionSortOptimized, vet1, n1, "Selection Sort Otimizado: ");
+    timeSearch(linearSearch, vet1[n1/2], vet1, n1, "Busca Linear em vetor ordenado");
+    timeSearch(binarySearch, vet1[n1/2], vet1, n1, "Busca Binária em vetor ordenado");
+
+    cout << "--------------------------------------------\n" << endl;
+
 
     cout << "PARA O TAMANHO 2, de n2=" << n2 << ", com demora de aproximadamente 30s" << endl;
     vector<int> vet2 = ReadArchiveBin("ArquivoN2_", n2);    
@@ -45,7 +48,7 @@ int main()
     copy2 = vet2;
     timeMean(SelectionSort, copy2, n2, "Selection Sort");
     copy2 = vet2;
-    timeMean(InsertionSortOptimized, copy2, n2, "Insertion Sort Otimizado");
+    timeMean(SelectionSortOptimized, copy2, n2, "Selection Sort Otimizado");
     
     timeSearch(linearSearch, 8, vet2, n2, "Busca Linear em vetor não ordenado");
     timeSearch(binarySearch, 8, vet2, n2, "Busca Binária em vetor não ordenado");
@@ -55,6 +58,9 @@ int main()
     timeSearch(linearSearch, 8, vet2, n2, "Busca Linear em vetor ordenado");
     timeSearch(binarySearch, 8, vet2, n2, "Busca Binária em vetor ordenado");
 
+    cout << "--------------------------------------------\n" << endl;
+
+
     vector<int> vet3 = ReadArchiveBin("ArquivoN3_", n3);
     vector<int> copy3 = vet3;
     cout << "PARA O TAMANHO 3, de n3=" << n3 << ", com demora de aproximadamente 3min" << endl;
@@ -62,7 +68,7 @@ int main()
     copy3 = vet3;
     timeMean(InsertionSort, copy3, n3, "Insertion Sort");
     copy3 = vet3;
-    timeMean(InsertionSortOptimized, copy3, n3, "Insertion Sort Otimizado");
+    timeMean(SelectionSortOptimized, copy3, n3, "Selection Sort Otimizado");
     copy3 = vet3;
     timeMean(BubbleSortOptimized, copy3, n3, "Bubble Sort Otimizado");
     timeMean(BubbleSort, vet3, n3, "Bubble Sort Puro");
