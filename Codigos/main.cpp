@@ -41,21 +41,20 @@ int main()
     cout << "PARA O TAMANHO 2, de n2=" << n2 << ", com demora de aproximadamente 30s" << endl;
     vector<int> vet2 = ReadArchiveBin("ArquivoN2_", n2);
     vector<int> copy2 = vet2;
-    timeMean(BubbleSortOptimized, copy2, n2, "Bubble Sort Otimizado");
-    copy2 = vet2;
-    timeMean(BubbleSort, copy2, n2, "Bubble Sort Puro");
-    copy2 = vet2;
     timeMean(SelectionSort, copy2, n2, "Selection Sort");
     copy2 = vet2;
     timeMean(SelectionSortOptimized, copy2, n2, "Selection Sort Otimizado");
 
     timeSearch(linearSearch, 8, vet2, n2, "Busca Linear em vetor não ordenado");
     timeSearch(binarySearch, 8, vet2, n2, "Busca Binária em vetor não ordenado");
-
-    timeMean(InsertionSort, vet2, n2, "Insertion Sort");
+    copy2=vet2;
+    timeMean(InsertionSort, copy2, n2, "Insertion Sort");
 
     timeSearch(linearSearch, 8, vet2, n2, "Busca Linear em vetor ordenado");
     timeSearch(binarySearch, 8, vet2, n2, "Busca Binária em vetor ordenado");
+    copy2 = vet2;
+    timeMean(BubbleSortOptimized, copy2, n2, "Bubble Sort Otimizado");
+    timeMean(BubbleSort, vet2, n2, "Bubble Sort Puro");
 
     cout << "--------------------------------------------\n"<< endl;
 
