@@ -48,4 +48,13 @@ Seguindo esses passos o código deverá ser executado no terminal Windows.
   ### 2. Execute o arquivo graficos.py
         Python graficos.py
 
-Assim será gerado uma imagem disponível para download com os 3 gráficos solicitados, para cada um dos tempos.
+Assim será gerado uma imagem disponível para download com os 3 gráficos solicitados dos algoritmos, para cada um dos tempos.
+
+## Configuração para gerar os gráficos das buscas
+
+  ### 1. Entre na pasta Grafico
+        cd Grafico
+  ### 2. Execute o arquivo graficos.py
+        Python graficosBuscas.py
+
+Assim será gerado uma imagem disponível para download com os tempos de buscas para os vetores de tamanho n1 e n2, antes e após a ordenação.
