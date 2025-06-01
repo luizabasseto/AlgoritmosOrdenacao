@@ -23,8 +23,7 @@ Este projeto tem como objetivo comparar o desempenho de diferentes algoritmos de
 
 ##  Gráficos
 
-Gráficos foram gerados para comparar o tempo de execução em diferentes tamanhos de entrada.  
-Exemplo: `Tempo de Execução × Tamanho do Vetor`.
+Gráficos foram gerados para comparar o tempo de execução em diferentes tamanhos de entrada. Os arquivos deles podem serem acessados clicando neste [Link](Grafico) aqui. Onde o `graficos.py` contém o modelo utilizado para montar os gráficos dos algoritmos de ordenação e o arquivo `graficosBuscas.py` mostra como foi gerado os gráficos para as buscas (Linear e Binária). A imagem gerada está disponível no [Relatório](Relatório P2 - ED1 - Algoritmos Ordenação e Buscas com Arquivo Binário.pdf) disponível em pdf. 
 
 ## Configuração Inicial
 
