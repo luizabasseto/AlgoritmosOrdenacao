@@ -23,7 +23,7 @@ Este projeto tem como objetivo comparar o desempenho de diferentes algoritmos de
 
 ##  Gráficos
 
-Gráficos foram gerados para comparar o tempo de execução em diferentes tamanhos de entrada. Os arquivos deles podem serem acessados clicando neste [Link](Grafico) aqui. Onde o `graficos.py` contém o modelo utilizado para montar os gráficos dos algoritmos de ordenação e o arquivo `graficosBuscas.py` mostra como foi gerado os gráficos para as buscas (Linear e Binária). A imagem gerada está disponível no [Relatório](Relatório P2 - ED1 - Algoritmos Ordenação e Buscas com Arquivo Binário.pdf) disponível em pdf. 
+Gráficos foram gerados para comparar o tempo de execução em diferentes tamanhos de entrada. Os arquivos deles podem serem acessados clicando neste [Link](Grafico) aqui. Onde o `graficos.py` contém o modelo utilizado para montar os gráficos dos algoritmos de ordenação e o arquivo `graficosBuscas.py` mostra como foi gerado os gráficos para as buscas (Linear e Binária). A imagem gerada está disponível no [Relatório](https://github.com/luizabasseto/AlgoritmosOrdenacao/blob/main/Relat%C3%B3rio%20P2%20-%20ED1%20-%20Algoritmos%20Ordena%C3%A7%C3%A3o%20e%20Buscas%20com%20Arquivo%20Bin%C3%A1rio.pdf) disponível em pdf. 
 
 ## Configuração Inicial
 
