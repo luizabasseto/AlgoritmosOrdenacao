@@ -13,19 +13,19 @@ Tempo gasto com Insertion Sort: 0.435547 segundos
 Trocas: 35709112, Comparações: 35721107
 
 Busca Linear em vetor não ordenado
-Resultado Index: 613 |  Comparações: 614 | Tempo Gasto: 1031.000000 microsegundos
+Resultado Index: 613 | Comparações: 614 | Tempo médio: 1.902 microsegundos
 
 Busca Binária em vetor não ordenado
-Resultado Index: -1 |  Comparações: 13 | Tempo Gasto: 0.000000 microsegundos
+Resultado Index: -1 | Comparações: 13 | Tempo médio: 0.330 microsegundos
 
 Tempo gasto com Selection Sort: 0.702620 segundos
 Trocas: 11971, Comparações: 71994000
 
 Busca Linear em vetor ordenado
-Resultado Index: 97 |  Comparações: 98 | Tempo Gasto: 0.000000 microsegundos
+Resultado Index: 97 | Comparações: 98 | Tempo médio: 0.545 microsegundos
 
 Busca Binária em vetor ordenado
-Resultado Index: 103 |  Comparações: 10 | Tempo Gasto: 0.000000 microsegundos
+Resultado Index: 103 | Comparações: 10 | Tempo médio: 0.397 microsegundos
 
 --------------------------------------------
 
@@ -37,19 +37,19 @@ Tempo gasto com Selection Sort Otimizado: 39.969767 segundos
 Trocas: 69911, Comparações: 2449962074
 
 Busca Linear em vetor não ordenado
-Resultado Index: 613 |  Comparações: 614 | Tempo Gasto: 0.000000 microsegundos
+Resultado Index: 613 | Comparações: 614 | Tempo médio: 1.912 microsegundos
 
 Busca Binária em vetor não ordenado
-Resultado Index: -1 |  Comparações: 16 | Tempo Gasto: 0.000000 microsegundos
+Resultado Index: -1 | Comparações: 16 | Tempo médio: 0.382 microsegundos
 
 Tempo gasto com Insertion Sort: 15.741638 segundos
 Trocas: 1223487348, Comparações: 1223557343
 
 Busca Linear em vetor ordenado
-Resultado Index: 567 |  Comparações: 568 | Tempo Gasto: 0.000000 microsegundos
+Resultado Index: 567 | Comparações: 568 | Tempo médio: 2.068 microsegundos
 
 Busca Binária em vetor ordenado
-Resultado Index: 613 |  Comparações: 10 | Tempo Gasto: 0.000000 microsegundos
+Resultado Index: 613 | Comparações: 10 | Tempo médio: 0.266 microsegundos
 
 Tempo gasto com Bubble Sort Otimizado: 47.826009 segundos
 Trocas: 1223487348, Comparações: 2449947980
