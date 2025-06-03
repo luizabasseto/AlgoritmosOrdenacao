@@ -19,7 +19,7 @@ Este projeto tem como objetivo comparar o desempenho de diferentes algoritmos de
 
 - Foram utilizados vetores pequenos para testes iniciais de corretude.
 - Para análise de desempenho, vetores grandes foram gerados com números aleatórios e salvos em arquivos binários.
-- O tempo de execução, número de trocas e comparações foram medidos com alta precisão.
+- O tempo de execução, número de trocas e comparações foram medidos.
 
 ##  Gráficos
 
