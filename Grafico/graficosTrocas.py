@@ -9,26 +9,23 @@ algoritmos = [
 ]
 
 trocas_12k = [35709112, 35709112, 35709112, 11971, 11971]
-trocas_70k = [1223487348, 1223487348, 1223487348, 69911, 69911]
-trocas_100k = [2506572675, 2506572675, 2506572675, 99887, 99887]
 
-fig, axs = plt.subplots(1, 3, figsize=(18, 6))
+fig, ax = plt.subplots(figsize=(10, 6)) 
+ax.bar(algoritmos, trocas_12k, color='skyblue')
+ax.set_title("Total de Trocas - Vetor com 12 mil elementos", fontsize=13, pad=15)
+ax.set_ylabel("Trocas (escala log)", fontsize=11)
+ax.tick_params(axis='x', rotation=25)
+ax.set_yscale('log')  
+ax.grid(True, which="both", linestyle="--", linewidth=0.5, alpha=0.7)
 
-cores = ['skyblue', 'orange', 'green']
-
-titulos = [
-    "Vetor com 12 mil elementos",
-    "Vetor com 70 mil elementos",
-    "Vetor com 100 mil elementos"
-]
-dados = [trocas_12k, trocas_70k, trocas_100k]
-
-for i in range(3):
-    axs[i].bar(algoritmos, dados[i], color=cores[i])
-    axs[i].set_title(f"Total de Trocas - {titulos[i]}")
-    axs[i].set_ylabel("Trocas (escala log)")
-    axs[i].tick_params(axis='x', rotation=25)
-    axs[i].set_yscale('log')  
+for bar in ax.patches:
+    altura = bar.get_height()
+    ax.text(
+        bar.get_x() + bar.get_width() / 2,
+        altura * 1.10,
+        f'{int(altura):,}'.replace(",", "."),
+        ha='center', va='bottom', fontsize=9
+    )
 
 plt.tight_layout()
 plt.show()
