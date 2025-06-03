@@ -5,7 +5,6 @@ algoritmos = [
     "Selection", "Selection Otimizado", "Insertion"
 ]
 
-# Valores atualizados com base nos dados fornecidos
 tempos_12k = [1.33083, 1.45114, 0.702620, 1.24734, 0.435547]
 tempos_70k = [111.310902, 47.826009, 18.218173, 39.969767, 15.741638]
 tempos_100k = [214.831378, 232.451618, 90.830032, 213.950280, 73.401721]
